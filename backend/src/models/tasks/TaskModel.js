@@ -13,7 +13,7 @@ const TaskSchema = new mongoose.Schema({
     },
     dueDate: {
         type: Date,
-        required: [true, "Please add a due date"],
+        default: Date.now,
 
     },
     status: {
@@ -23,8 +23,7 @@ const TaskSchema = new mongoose.Schema({
     },
     completed: {
         type: Boolean,
-        enum: ["low", "medium", "hight"],
-        default: "low",
+        default: false,
     },
     priority: {
         type: String,
@@ -32,7 +31,7 @@ const TaskSchema = new mongoose.Schema({
         default: "low",
     },
     user: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: mongoose.Schema.ObjectId,
         ref: "User",
         required: true,
     },
